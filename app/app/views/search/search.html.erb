@@ -1,4 +1,9 @@
-<h1>Hello</h1>
+<h1>企業一覧</h1>
 <p>
-こんにちは。お元気ですか。
+<% @companies.each do |company|%>
+[法人番号]<%= company.corporate_number %>
+[企業名]<%= company.name %>
+[企業名(カナ)]<%= company.name_kana %>
+[所在地]<%= company.address %><br>
+<% end %>
 </p>

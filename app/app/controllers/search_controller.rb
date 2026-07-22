@@ -1,6 +1,7 @@
 class SearchController < ApplicationController
 
-    def hello
+    def disp
+        @companies = Company.all
         render "search/search"
     end
 end
