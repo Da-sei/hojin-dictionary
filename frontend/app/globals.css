@@ -1,26 +1,76 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* DESIGN.md */
+  --color-ink: #000000; /* テーマカラー */
+  --color-slate: #696969; /* サブカラー */
+  --color-work: #008000; /* ワーキングカラー */
+  --color-warn: #dc143c; /* ワーニングカラー */
+
+  --color-paper: #faf8f2;
+  --color-paper-raised: #fffefb;
+  --color-paper-line: #e4dfd0;
+  --color-work-soft: #e9f1e7;
+  --color-warn-soft: #fbe9ec;
+
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-ink: var(--color-ink);
+  --color-slate: var(--color-slate);
+  --color-work: var(--color-work);
+  --color-work-soft: var(--color-work-soft);
+  --color-warn: var(--color-warn);
+  --color-warn-soft: var(--color-warn-soft);
+  --color-paper: var(--color-paper);
+  --color-paper-raised: var(--color-paper-raised);
+  --color-paper-line: var(--color-paper-line);
+  --font-sans: var(--font-zen-kaku);
+  --font-display: var(--font-shippori-mincho);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* subtle fibrous paper texture for the ledger surface */
+.bg-paper-texture {
+  background-color: var(--color-paper);
+  background-image:
+    radial-gradient(rgba(0, 0, 0, 0.035) 0.5px, transparent 0.5px),
+    radial-gradient(rgba(0, 0, 0, 0.02) 0.5px, transparent 0.5px);
+  background-size: 3px 3px, 7px 7px;
+  background-position: 0 0, 1.5px 3.5px;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes row-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-row-in {
+  animation: row-in 0.35s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-row-in {
+    animation: none;
+    opacity: 1;
+  }
 }
